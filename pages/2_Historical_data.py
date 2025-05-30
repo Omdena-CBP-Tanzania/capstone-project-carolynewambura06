@@ -32,16 +32,21 @@ df['Date'] = pd.to_datetime(df['Year'].astype(str) + '-' + df['Month'].astype(st
 
 st.title("📊 Historical Climate Trends")
 
-# 1. CORRELATION MAP (NEW)
+## 1. CORRELATION MAP (FIXED)
 st.header("Climate Variables Correlation")
-corr = df[['Average_Temperature_C', 'Total_Rainfall_mm', 'Humidity', 'Wind_Speed']].corr()
+# Select ONLY numeric climate variables (exclude Year/Month)
+corr = df[['Average_Temperature_C', 'Total_Rainfall_mm', 
+           'Max_Temperature_C', 'Min_Temperature_C']].corr()
+
 fig_corr, ax_corr = plt.subplots(figsize=(8,6))
 sns.heatmap(corr, 
             annot=True, 
             cmap='coolwarm', 
+            vmin=-1, vmax=1,  # Ensures color scale matches correlation range
             fmt=".2f",
-            linewidths=0.5)
-plt.title("How Variables Relate to Each Other")
+            linewidths=0.5,
+            square=True)  # Makes the plot square for better readability
+plt.title("Correlation Between Climate Variables")
 st.pyplot(fig_corr)
 
 tab1, tab2 = st.tabs(["Temperature", "Rainfall"])
