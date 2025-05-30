@@ -8,7 +8,7 @@ st.info("These forecasts are specific to Dar es Salaam's coastal climate pattern
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(r"data\tanzania_climate_data.csv")
+    return pd.read_csv("data/tanzania_climate_data.csv")
 
 @st.cache_resource
 def load_model():

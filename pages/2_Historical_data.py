@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(r"data\tanzania_climate_data.csv")
+    return pd.read_csv("data/tanzania_climate_data.csv")
 
 def create_rainfall_heatmap(df):
     """Create a rainfall heatmap using matplotlib"""
