@@ -38,12 +38,14 @@ tab1, tab2 = st.tabs(["Temperature", "Rainfall"])
 with tab1:
     st.subheader("Temperature Patterns")
     fig, ax = plt.subplots(figsize=(10,4))
+    ax.set_ylabel("Temperature (°C)")
     df.groupby('Date')['Average_Temperature_C'].mean().plot(ax=ax, color='orange')
     st.pyplot(fig)
 
 with tab2:
     st.subheader("Rainfall Patterns")
     fig, ax = plt.subplots(figsize=(10,4))
+    ax.set_ylabel("Rainfall (mm)")
     df.groupby('Date')['Total_Rainfall_mm'].sum().plot(ax=ax)
     st.pyplot(fig)
     
